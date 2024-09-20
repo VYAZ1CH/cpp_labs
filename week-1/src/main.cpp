@@ -4,8 +4,12 @@
 using namespace std;
 double area(double a);
 int main()
-{
-    cout << area(10) << endl;
+{	
+	int f = 0;
+	cout << "Hello World" << endl;
+	cout << "Enter Length" << endl;
+	cin >> f;
+	cout << "Volume of the Icosahedron: "<< area(f) << endl;
 }
 
 double area(double a) {
