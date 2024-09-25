@@ -5,18 +5,29 @@ using namespace std;
 double area(double a);
 int main()
 {	
-	
-	short n = 32767;  // 2 Bytes
-	unsigned short  b = 65535; // 2 Bytes
-	long d =  223372036854775807; // 8 Bytes
-	unsigned long a = 18446744073709551615; // 8 Bytes	
+	// Максимальное и минимальное значение зависит от количества занимаемо памяти
+	// Все переменные Unsignet имеют минимальное значение 0 
+	short n = 32767;  // Занимет в памяти 2 байта
+	short min = -32768; // Занимет в памяти 2 байтт
+	unsigned short  b = 65535; // Занимает в памяти 2 байта
+	int long d = 2147483648; // Занимает в памяти 4 байта
+	int long min2 = -2147483648; // Занимает в памяти 4 байта
+	unsigned long a = 4294967295; // Занимает в памяти 4 байт
+	long long int lon = 9223372036854775807; // Занимает в памяти 8 байт
+	long long int minl = -9223372036854775807; // Занимает в памяти 8 байт
+	unsigned long long int r  = 18446744073709551615; // Занимает в памяти 8 байт 
 	int f = 0;
 	cout << "Hello World" << endl;
 	cout << "Short max: " << n << endl;
+	cout << "Short min: " << min << endl;
 	cout << "Unsignet short max: " << b << endl;
 	cout << "Long max:  " << d << endl;
+	cout << "Long min: " << min2 << endl;
 	cout << "Unsignet long: " << a << endl;
-	cout << "Enter Length" << endl;
+	cout << "Long Long max: " << lon << endl;
+	cout << "Long long min: " << minl << endl;
+	cout << "Unsigned long long max: " << r << endl;
+	cout << "Enter Length: " << endl;
 	cin >> f;
 	cout << "Volume of the Icosahedron: "<< area(f) << endl;
 }
