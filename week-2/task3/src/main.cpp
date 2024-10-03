@@ -38,14 +38,17 @@ class Car {
 private:
     Engine engine;
     string model;
+
 public: 
-    Passenger* passenger1;
-    Passenger* passenger2;
+   
+    Passenger* passenger1 = nullptr;
+    Passenger* passenger2 = nullptr;
+
     
 
-    void car(string model, Engine engine) {
-        this->model = model;
-        this->engine = engine;
+    Car(const string& model, Engine engine) {
+         this->model = model;
+         this->engine = engine;
     }
 
     void addPassenger(Passenger* passenger) {
@@ -87,8 +90,6 @@ public:
         d.append("\n");
         return d;
     }
-
-
 };
 
 
@@ -101,8 +102,7 @@ int main()
     b1.setName("Lesha");
     Passenger b2;
     b2.setName("Anton");
-    Car Lada;
-    Lada.car("Lada", v12);
+    Car Lada("Lada", v12);
     Lada.addPassenger(&b1);
     Lada.addPassenger(&b2);
     cout << Lada.displayInfo() << endl;
