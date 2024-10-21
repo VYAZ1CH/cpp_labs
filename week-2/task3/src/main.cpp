@@ -1,98 +1,10 @@
 #include <string>
 #include <iostream>
+#include "Engine.hpp"
+#include "Passenger.hpp"
+#include "Car.hpp"
+
 using namespace std;
-
-class Engine {
-
-private: 
-    int power;
-
-public:
-    void setPower(int power) {
-        this->power = power;
-    }
-    int getPower() {
-    
-        return power;
-    }
-};
-
-class Passenger {
-
-private:
-    string name;
-
-public: 
-    void setName(string name) {
-        this->name = name;
-    }
-    string getName() {
-
-        return name;
-    }
-};
-
-
-class Car {
-
-private:
-    Engine engine;
-    string model;
-
-public: 
-   
-    Passenger* passenger1 = nullptr;
-    Passenger* passenger2 = nullptr;
-
-    
-
-    Car(const string& model, Engine engine) {
-         this->model = model;
-         this->engine = engine;
-    }
-
-    void addPassenger(Passenger* passenger) {
-        if (passenger1 == NULL) {
-            
-            this->passenger1 = passenger; 
-        }
-        else {
-            this->passenger2 = passenger;
-        
-        }
-    
-    }
-
-
-    void removePassenger(Passenger passenger) {
-        if (passenger1->getName() == passenger.getName()) {
-            passenger1 = NULL; 
-        }
-    
-        if (passenger2->getName() == passenger.getName()) {
-            passenger2 = NULL;
-        }
-    }
-
-    string displayInfo() {
-        string d;
-        d.append("Car Model: ");
-        d.append(model);
-        d.append("\n");
-        d.append("Engine power: ");
-        d.append(to_string(engine.getPower()));
-        d.append("\n");
-        d.append("Passenger 1: ");
-        d.append(passenger1->getName());
-        d.append("\n");
-        d.append("Passenger 2: ");
-        d.append(passenger2->getName());
-        d.append("\n");
-        return d;
-    }
-};
-
-
 
 int main()
 {
