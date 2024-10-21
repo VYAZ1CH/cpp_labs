@@ -6,7 +6,7 @@ int main()
     BankAccount One;
     One.setBalance(100);
     One.deposit(200);
-    One.withdraw(300);
-    cout << One.getBalance() << endl;
+    One.withdraw(250);
+    cout << "Accout Balance: "  << One.getBalance() << endl;
 }
 
