@@ -1,46 +1,60 @@
 #include <iostream>
-#include <vector>
 #include <chrono>
+#include <vector>
+#include "../include/fibonacci.hpp"
 
-unsigned long long fibonacci(int n) {
-    if (n <= 1) {
-        return n;
-    }
-    return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-unsigned long long fibonacciCached(int n, std::vector<unsigned long long>& cache) {
-    if (cache[n] != 0) {
-        return cache[n];
-    }
-    if (n <= 1) {
-        return n;
-    }
-    cache[n] = fibonacciCached(n - 1, cache) + fibonacciCached(n - 2, cache);
-    return cache[n];
-}
-
-void runTest(int n) {
-    // ������������ �����
-    auto start = std::chrono::high_resolution_clock::now();
-    auto fibResult1 = fibonacci(n);
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> duration1 = end - start;
-
-    // ������������ �����
-    start = std::chrono::high_resolution_clock::now();
-    std::vector<unsigned long long> cache(n + 1, 0);
-    auto fibResult2 = fibonacciCached(n, cache);
-    end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> duration2 = end - start;
-
-    std::cout << "Fibonacci(" << n << ") = " << fibResult1 << " (classic) in " << duration1.count() << " seconds.\n";
-    std::cout << "Fibonacci(" << n << ") = " << fibResult2 << " (cached) in " << duration2.count() << " seconds.\n";
-}
+using namespace std;
 
 int main() {
-    for (int n = 0; n <= 40; n += 5) { // ��������� �� 0 �� 40
-        runTest(n);
+    vector<int> n_values;
+    vector<double> classic_times;
+    vector<double> optimized_times;
+
+    string input; 
+    cout << "Данные для построения графиков:\n"; 
+    cout << "n\tClassic\tOptimized\n"; 
+
+    while (true) {
+        cout << "Введите число Фибоначчи (или 0 для выхода, c для очистки): ";
+        cin >> input;
+
+        if (input == "0") {
+            break; 
+        } else if (input == "c") {
+           
+            n_values.clear();
+            classic_times.clear();
+            optimized_times.clear();
+            cout << "Данные очищены.\n";
+            continue; 
+        }
+
+        int n = stoi(input); // Преобразуем строку в целое число
+        n_values.push_back(n);
+
+        auto start = chrono::high_resolution_clock::now();
+        fibonacci_classic(n);
+        auto end = chrono::high_resolution_clock::now();
+        chrono::duration<double> classic_time = end - start;
+        classic_times.push_back(classic_time.count());
+
+        start = chrono::high_resolution_clock::now();
+        fibonacci_optimized(n);
+        end = chrono::high_resolution_clock::now();
+        chrono::duration<double> optimized_time = end - start;
+        optimized_times.push_back(optimized_time.count());
+
+        
+        cout << n << "\t" << classic_times.back() << "\t" << optimized_times.back() << "\n";
     }
+
     return 0;
 }
+
+
+
+
+
+
+
+
