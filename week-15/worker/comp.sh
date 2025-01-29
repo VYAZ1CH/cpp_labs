@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /clusterfs/arapov/week15/worker
+cd /clusterfs/ivannikov/week15/worker
 mkdir build
 cd build
 cmake ..
