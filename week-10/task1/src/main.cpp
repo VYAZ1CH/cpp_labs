@@ -1,16 +1,19 @@
-#include "array_stack.h"
 #include <iostream>
-#include <string>
+#include "StackInterface.h"
+#include "Stack.cpp"
 
 int main() {
-    ArrayStack<std::string> stringStack;
+    Stack<int> stackInt;
+    stackInt.push(1);
+    stackInt.push(2);
+    std::cout << "Top element (int): " << stackInt.top() << std::endl;
+    stackInt.pop();
 
-    stringStack.push("Hello");
-    stringStack.push("World");
-
-    while (!stringStack.isEmpty()) {
-        std::cout << stringStack.pop() << std::endl;
-    }
+    Stack<std::string> stackString;
+    stackString.push("Hello");
+    stackString.push("World");
+    std::cout << "Top element (string): " << stackString.top() << std::endl;
+    stackString.pop();
 
     return 0;
 }

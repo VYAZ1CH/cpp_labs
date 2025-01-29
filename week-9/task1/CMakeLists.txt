@@ -16,24 +16,15 @@ enable_testing()
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-add_executable(tests tests/test_fibonacci.cpp)
-target_link_libraries(tests fibonacci ${GTEST_LIBRARIES} pthread)
+# Изменено имя исполняемого файла
+add_executable(fibonacci_tests tests/test_fibonacci.cpp)
+target_link_libraries(fibonacci_tests fibonacci ${GTEST_LIBRARIES} pthread)
 
-add_test(NAME FibonacciTests COMMAND tests)
+# Обновлено имя теста
+add_test(NAME FibonacciTests COMMAND fibonacci_tests)
 
 add_custom_target(run_tests ALL
     COMMAND ${CMAKE_COMMAND} -E echo "Запуск тестов..."
     COMMAND ctest
-    DEPENDS tests
+    DEPENDS fibonacci_tests
 )
-
-
-
-
-
-
-
-
-
-
-
